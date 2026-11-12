@@ -3,7 +3,7 @@ title: Hola, mundo
 summary: La primera entrada de esta plantilla.
 date: 2026-10-22T00:00:00.000Z
 author: jane-doe
-cover: ''
+cover: /uploads/cms-proof-cover.png
 draft: false
 ---
 

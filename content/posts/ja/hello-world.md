@@ -3,7 +3,7 @@ title: こんにちは、世界
 summary: このテンプレートの最初の記事です。
 date: 2026-10-22T00:00:00.000Z
 author: jane-doe
-cover: ''
+cover: /uploads/cms-proof-cover.png
 draft: false
 ---
 
