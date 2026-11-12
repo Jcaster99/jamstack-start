@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.213.5/schema/sveltia-cms.json
+backend:
+  name: github
+  repo: Jcaster99/jamstack-start
+  branch: main
+  # base_url is set at runtime to window.location.origin in admin/index.html
+  auth_endpoint: /api/auth
+  commit_messages:
+    openAuthoring: '{{message}} (by {{author-login}})'
+
+app_title: Site Admin
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+logo:
+  src: /app-icon.png
+  show_in_header: true
+
+i18n:
+  structure: multiple_folders
+  locales: [en, zh, ja, th, es]
+  default_locale: en
+
+slug:
+  encoding: unicode
+  clean_accents: true
+  sanitize_replacement: "-"
+  trim: true
+  lowercase: true
+  timezone: utc
+
+collections:
+  - name: "authors"
+    label: "Authors"
+    icon: "person"
+    label_singular: "Author"
+    description: "Authors collections"
+    folder: "content/authors"
+    slug: "{{slug}}"
+    create: true
+    extension: yaml
+    format: yaml
+    editor:
+      preview: false
+    fields:
+      - { label: "Name", name: "name", widget: "string"}
+      - { label: "Avatar", name: "avatar", widget: "image", required: false }
+      - { label: "Bio", name: "bio", widget: "text", required: false }
+      - { label: "Email", name: "email", widget: "string", type: "email", required: false }
+      - { label: "Website", name: "website", widget: "string", type: "url", required: false, hint: "Full URL, e.g. https://example.com" }
+      - { label: "Twitter", name: "twitter", widget: "string", type: "url", required: false, hint: "Full URL, e.g. https://x.com/handle" }
+      - { label: "GitHub", name: "github", widget: "string", type: "url", required: false, hint: "Full URL, e.g. https://github.com/handle" }
+
+  - name: "posts"
+    label: "Posts"
+    icon: "article"
+    label_singular: "Post"
+    description: "Blog posts, one file per locale: content/posts/<locale>/<slug>.md"
+    folder: "content/posts"
+    slug: "{{slug}}"
+    create: true
+    extension: md
+    format: frontmatter
+    i18n: true
+    sortable_fields: [date, title]
+    summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - { label: "Summary", name: "summary", widget: "text", required: false, i18n: true }
+      # Saved in UTC with a trailing Z so builds do not depend on the machine timezone.
+      - { label: "Date", name: "date", widget: "datetime", output_utc: true, i18n: duplicate }
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "authors"
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        display_fields: ["name"]
+        i18n: duplicate
+      - { label: "Cover", name: "cover", widget: "image", required: false, i18n: duplicate }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false, i18n: duplicate }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-auto-theming="false">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/app-icon.png" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <!-- Pinned + SRI. When upgrading, update the version and the integrity hash together. -->
+    <script
+      src="https://unpkg.com/@sveltia/cms@0.213.5/dist/sveltia-cms.js"
+      integrity="sha384-Flx2OGrL07/xlXgdr8Ghi1io9aV52ZTWbNNo5v4o+xHPfRn4HN72OlHa+VQdFrJA"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Merged on top of config.yml: the OAuth proxy (/api/auth) lives on this origin.
+      CMS.init({
+        config: {
+          backend: { base_url: window.location.origin },
+        },
+      });
+
+    
+      CMS.registerEditorComponent({
+        id: 'youtube',
+        label: 'YouTube',
+        icon: 'youtube_activity',
+        fields: [
+          { name: 'id', label: 'ID' },
+          { name: 'width', label: 'Width', widget: 'number', value_type: 'int', default: 560 },
+          { name: 'height', label: 'Height', widget: 'number', value_type: 'int', default: 315 },
+        ],
+        pattern: /{{< youtube id="(?<id>.*?)"(?: width="(?<width>.*?)" height="(?<height>.*?)")? >}}/m,
+        fromBlock: ({ groups: { id, width, height } = {} }) => ({
+          id,
+          width: width ? Number(width) : 560,
+          height: height ? Number(height) : 315,
+        }),
+        toBlock: ({ id, width = 560, height = 315 }) =>
+          `{{< youtube id="${id}" width="${width}" height="${height}" >}}`,
+        toPreview: ({ id, width = 560, height = 315 }) =>
+          id
+            ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}"
+                width="${width}" height="${height}" allowfullscreen
+                allow="autoplay; encrypted-media; picture-in-picture"></iframe>`
+            : '',
+      });
+
+      CMS.registerEditorComponent({
+        id: 'code',
+        label: 'Code Block',
+        icon: 'code',
+        fields: [
+          {
+            name: 'language',
+            label: 'Language',
+            widget: 'select',
+            options: [
+              'javascript',
+              'typescript',
+              'python',
+              'php',
+              'java',
+              'csharp',
+              'cpp',
+              'c',
+              'ruby',
+              'go',
+              'rust',
+              'swift',
+              'kotlin',
+              'html',
+              'css',
+              'scss',
+              'sql',
+              'bash',
+              'shell',
+              'yaml',
+              'json',
+              'xml',
+              'markdown',
+            ],
+            default: 'javascript',
+          },
+          {
+            name: 'code',
+            label: 'Code',
+            widget: 'text',
+          },
+        ],
+        pattern: /```(?<language>\w+)?\n(?<code>[\s\S]*?)\n```/m,
+        fromBlock: ({ groups: { language = 'javascript', code = '' } = {} }) => ({
+          language,
+          code: code.trim(),
+        }),
+        toBlock: ({ language = 'javascript', code = '' }) =>
+          `\`\`\`${language}\n${code}\n\`\`\``,
+        toPreview: ({ language = 'javascript', code = '' }) =>
+          code
+            ? `<pre><code class="language-${language}">${code
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')}</code></pre>`
+            : '',
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "404 - Page not found": "404 - Página no encontrada",
+  "The page you are looking for does not exist.": "La página que buscas no existe.",
+  "Welcome to TanStack Start": "Bienvenido a TanStack Start",
+  "Edit {file} to get started.": "Edita {file} para empezar.",
+  "Authors ({count})": "Autores ({count})",
+  "Email": "Correo",
+  "Website": "Sitio web",
+  "All posts": "Todos los artículos",
+  "Posts": "Artículos",
+  "No posts yet.": "Aún no hay artículos.",
+  "Draft": "Borrador",
+  "Home": "Inicio",
+  "Switch language": "Cambiar idioma"
+}

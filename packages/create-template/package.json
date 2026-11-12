@@ -1,0 +1,21 @@
+{
+  "name": "@ayden/create-template",
+  "version": "0.1.0",
+  "description": "Scaffold a TanStack Start + Lingui + Sveltia CMS project on Cloudflare Workers",
+  "type": "module",
+  "bin": {
+    "create-template": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template"
+  ],
+  "scripts": {
+    "build": "node scripts/build-template.js",
+    "prepack": "node scripts/build-template.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,24 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json
+.dev.vars*
+!.dev.vars.example
+.content-collections
+src/locales/*.js
+
+# template-repo:start (stripped from generated projects)
+packages/create-template/template
+*.tgz
+# template-repo:end

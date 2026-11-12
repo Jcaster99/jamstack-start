@@ -1,0 +1,9 @@
+# Copy to .dev.vars for `bun dev` / `wrangler dev`. In production use `wrangler secret put <NAME>`.
+# GitHub OAuth App. Callback URL: <origin serving /admin>/api/auth/callback?provider=github
+# e.g. http://localhost:3000/api/auth/callback?provider=github
+OAUTH_GITHUB_CLIENT_ID=
+OAUTH_GITHUB_CLIENT_SECRET=
+
+# GitLab OAuth application (optional)
+OAUTH_GITLAB_CLIENT_ID=
+OAUTH_GITLAB_CLIENT_SECRET=

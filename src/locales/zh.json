@@ -1,0 +1,15 @@
+{
+  "404 - Page not found": "404 - 页面未找到",
+  "The page you are looking for does not exist.": "您访问的页面不存在。",
+  "Welcome to TanStack Start": "欢迎使用 TanStack Start",
+  "Edit {file} to get started.": "编辑 {file} 开始使用。",
+  "Authors ({count})": "作者（{count}）",
+  "Email": "邮箱",
+  "Website": "网站",
+  "All posts": "所有文章",
+  "Posts": "文章",
+  "No posts yet.": "暂无文章。",
+  "Draft": "草稿",
+  "Home": "首页",
+  "Switch language": "切换语言"
+}

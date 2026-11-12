@@ -1,0 +1,15 @@
+{
+  "404 - Page not found": "404 - ไม่พบหน้านี้",
+  "The page you are looking for does not exist.": "ไม่มีหน้าที่คุณกำลังค้นหา",
+  "Welcome to TanStack Start": "ยินดีต้อนรับสู่ TanStack Start",
+  "Edit {file} to get started.": "แก้ไข {file} เพื่อเริ่มต้น",
+  "Authors ({count})": "ผู้เขียน ({count})",
+  "Email": "อีเมล",
+  "Website": "เว็บไซต์",
+  "All posts": "บทความทั้งหมด",
+  "Posts": "บทความ",
+  "No posts yet.": "ยังไม่มีบทความ",
+  "Draft": "ฉบับร่าง",
+  "Home": "หน้าแรก",
+  "Switch language": "เปลี่ยนภาษา"
+}
